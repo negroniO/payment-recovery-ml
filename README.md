@@ -2,67 +2,57 @@
   <img src="assets/banner.png" width="100%" />
 </p>
 
+# 💳 Payment Recovery Prediction (ML + SQL + Streamlit)
 
-# Payment Recovery Prediction (ML + SQL + Streamlit)
+An end-to-end machine learning project that predicts which **failed or unpaid transactions** will be recovered within **30 days**, and prioritizes outreach based on **expected recovered revenue** (amount × probability).  
+Built fully from scratch using **Python**, **SQL**, **PostgreSQL**, **scikit-learn**, and **Streamlit**.
 
-A complete end-to-end machine learning project that predicts which **failed customer payments** will be recovered within **30 days**, and prioritizes outreach based on **expected recovered revenue** (amount × probability).
+## 🚀 Live Demo (Streamlit)
 
-This project includes:
+👉 **https://payment-recovery-ml.streamlit.app**
 
-- synthetic payment dataset  
-- PostgreSQL data model + feature engineering  
-- ML training pipeline with calibration  
-- scoring pipeline with expected value optimization  
-- Streamlit app for interactive scoring  
-- Git version control & reproducible environment  
+Upload a CSV exported from your `v_feature_view` (or use the included sample file) to:
 
-## Project Highlights
+- score unpaid invoices  
+- compute expected recovered revenue  
+- see predicted 30-day recovery probability  
+- and prioritize outreach based on business impact  
 
-- **✔ ML model:** Calibrated Logistic Regression  
-- **✔ Metrics:** PR AUC, Brier Score, Lift (Top-K vs overall)  
-- **✔ Feature engineering:** customer history, device/country/provider, retries, event timing  
-- **✔ Expected value ranking:** maximize revenue, not probability  
-- **✔ SQL-first workflow:** raw → staging → feature view  
-- **✔ Reproducible pipelines:** `train_from_scratch.py`, `score_from_scratch.py`  
-- **✔ Interactive UI:** Streamlit dashboard to score invoices
+## 📌 Project Highlights
 
-## Tech Stack
+- **🔥 ML model:** Calibrated Logistic Regression  
+- **📊 Metrics:** PR AUC, Brier Score, Lift (Top-K vs overall)  
+- **🧠 Feature engineering:** customer history, retries, timestamps, device, provider, country  
+- **💰 Expected value ranking:** maximize revenue, not raw probability  
+- **🗄️ SQL pipeline:** raw → staging → feature view (PostgreSQL)  
+- **📦 Reproducible:** Conda environment + modular Python scripts  
+- **🖥️ Interactive UI:** Streamlit app for real-time scoring & prioritization  
 
-**Languages & Core**
+## 🛠 Tech Stack
 
-![Python](https://img.shields.io/badge/Python-3.10-3776AB?logo=python&logoColor=white)
-![SQL](https://img.shields.io/badge/SQL-Gray)
+**Languages & Core**  
+Python, SQL
 
-**Data & ML**
+**Data & ML**  
+Pandas, NumPy, scikit-learn
 
-![Pandas](https://img.shields.io/badge/Pandas-150458?logo=pandas&logoColor=white)
-![NumPy](https://img.shields.io/badge/NumPy-013243?logo=numpy&logoColor=white)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?logo=scikitlearn&logoColor=white)
-![XGBoost](https://img.shields.io/badge/XGBoost-EB5E28)
+**Database**  
+PostgreSQL, psycopg2
 
-**Database & Backend**
+**App**  
+Streamlit
 
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?logo=postgresql&logoColor=white)
-![psycopg2](https://img.shields.io/badge/psycopg2-DB%20Adapter-blue)
+**Dev Tools**  
+Git, Conda, Jupyter
 
-**App & Visualization**
-
-![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?logo=streamlit&logoColor=white)
-
-**DevOps & Tooling**
-
-![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white)
-![Conda](https://img.shields.io/badge/Conda-44A833?logo=anaconda&logoColor=white)
-![Jupyter](https://img.shields.io/badge/Jupyter-F37626?logo=jupyter&logoColor=white)
-
-
-## Project Structure
+## 📁 Project Structure
 
 ```
 payment-recovery-ml/
 ├── app/
 │   └── streamlit_app.py
 ├── data/
+│   └── sample_feature_view.csv
 ├── models/
 │   └── model_calibrated.joblib
 ├── notebooks/
@@ -72,39 +62,62 @@ payment-recovery-ml/
 │   └── 03_feature_view.sql
 ├── train_from_scratch.py
 ├── score_from_scratch.py
+├── environment.yml
 └── README.md
 ```
 
-## Data Model (PostgreSQL)
+## 🗄️ Data Model (PostgreSQL)
 
-Includes raw transactions, staging, and a feature engineering layer using window functions.
+The project uses a 3-layer SQL design:
 
-## Machine Learning Pipeline
+### **1️⃣ Raw Layer**  
+Stores synthetic transactions: provider, device, timestamps, retries, country, payment_date.
 
-- Train/test temporal split  
+### **2️⃣ Staging Layer**  
+Cleans data, fixes timestamps, and assigns the binary label:
+```
+label_recovered_30d = payment_date <= invoice_date + 30 days
+```
+
+### **3️⃣ Feature View**  
+Window functions generate:  
+customer history, amount bucket, days since invoice, days since last event, retries, provider, device, country, and more.
+
+## 🤖 Machine Learning Pipeline
+
+- Temporal split (train vs test)  
 - Preprocessing (scaling + one-hot encoding)  
-- Logistic Regression with class balancing  
-- Calibration (`CalibratedClassifierCV`)  
+- Logistic Regression (balanced)  
+- Probability calibration  
 - PR AUC + Brier Score evaluation  
-- Saves `model_calibrated.joblib`
+- Saves: `model_calibrated.joblib`
 
-## Scoring Pipeline
+## 📈 Scoring Pipeline — Expected Value Approach
 
-Computes:
+Instead of sorting only by probability:
 
-- Probability of 30-day recovery  
-- Expected recovered revenue (`amount × p_recover_30d`)  
-- Top-K prioritization based on expected value  
-- Outputs scored CSV  
+```
+ev_recovered = amount × p_recover_30d
+```
 
-## Streamlit App
+This ranks invoices by **maximum revenue recovery** potential.
 
+Exports:  
+- recovery probability  
+- expected recovered revenue  
+- top-K prioritization  
+- timestamped CSV  
+
+## 🖥️ Streamlit App
+
+Features:  
 - Upload CSV or load from Postgres  
 - Score invoices  
 - View KPIs  
+- Prioritize by expected value  
 - Download results  
 
-## Running the Project
+## ▶️ Run Locally
 
 ```
 conda env create -f environment.yml
@@ -116,9 +129,11 @@ python score_from_scratch.py
 streamlit run app/streamlit_app.py
 ```
 
-## Future Enhancements
+## 🔮 Future Enhancements
 
-- Add XGBoost  
+- XGBoost model  
 - SHAP explanations  
-- Automated ETL  
+- Automated ETL & batch scoring  
 - Writebacks to Postgres  
+- Monitoring & alerting  
+- CI/CD integration  
