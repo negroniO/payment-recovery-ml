@@ -1,0 +1,8 @@
+pandas
+numpy
+scikit-learn
+joblib
+streamlit
+psycopg2-binary
+python-dotenv
+xgboost
