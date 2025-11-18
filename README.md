@@ -26,6 +26,36 @@ This project includes:
 - **✔ Reproducible pipelines:** `train_from_scratch.py`, `score_from_scratch.py`  
 - **✔ Interactive UI:** Streamlit dashboard to score invoices
 
+## Tech Stack
+
+**Languages & Core**
+
+![Python](https://img.shields.io/badge/Python-3.10-3776AB?logo=python&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-Gray)
+
+**Data & ML**
+
+![Pandas](https://img.shields.io/badge/Pandas-150458?logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?logo=numpy&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?logo=scikitlearn&logoColor=white)
+![XGBoost](https://img.shields.io/badge/XGBoost-EB5E28)
+
+**Database & Backend**
+
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?logo=postgresql&logoColor=white)
+![psycopg2](https://img.shields.io/badge/psycopg2-DB%20Adapter-blue)
+
+**App & Visualization**
+
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?logo=streamlit&logoColor=white)
+
+**DevOps & Tooling**
+
+![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white)
+![Conda](https://img.shields.io/badge/Conda-44A833?logo=anaconda&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?logo=jupyter&logoColor=white)
+
+
 ## Project Structure
 
 ```
