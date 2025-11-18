@@ -7,17 +7,18 @@
 
 \f0\fs24 \cf0 name: payrec-ml\
 channels: [conda-forge, defaults]\
-dependencies:\
-  - python=3.11\
-  - pip\
-  - pip:\
-      - pandas\
-      - numpy\
-      - scikit-learn\
-      - joblib\
-      - streamlit\
-      - psycopg2-binary\
-      - shap\
-      - spyder-kernels\
-      - ipykernel\
+name: payrec-ml
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - pandas
+      - numpy
+      - scikit-learn
+      - joblib
+      - streamlit
+      - psycopg2-binary
+      - python-dotenv
+      - xgboost
+
 }
