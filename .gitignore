@@ -15,7 +15,7 @@ data/*
 
 # Models
 models/*
-!models/.gitkeep
+!models/model_calibrated.joblib
 
 # Streamlit
 .streamlit/
