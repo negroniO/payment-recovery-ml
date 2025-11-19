@@ -21,6 +21,7 @@ Built fully from scratch using **Python**, **SQL**, **PostgreSQL**, **scikit-lea
 - [Business Impact](#business-impact)
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
+- [How to Use](#how-to-use-this-repository)
 - [Data Model](#data-model-postgresql)
 - [Machine Learning Pipeline](#machine-learning-pipeline)
 - [Scoring Pipeline](#scoring-pipeline--expected-value-approach)
@@ -102,6 +103,18 @@ payment-recovery-ml/
 ├── environment.yml
 └── README.md
 ```
+## How to Use This Repository
+
+**If you are a developer or recruiter exploring the project**, here’s how each part works:
+
+- Use the `sql/` folder to recreate the full PostgreSQL schema  
+- Use `train_from_scratch.py` to train a calibrated ML model  
+- Use `score_from_scratch.py` to score new invoices and compute expected value  
+- Use the Streamlit app (`app/streamlit_app.py`) for an interactive UI  
+- Use `data/sample_feature_view.csv` to quickly test the app  
+
+This structure replicates a realistic MLOps workflow:
+**SQL → ML Training → Scoring Pipeline → Web App.**
 
 ## Data Model (PostgreSQL)
 
