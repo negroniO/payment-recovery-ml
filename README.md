@@ -2,6 +2,15 @@
   <img src="assets/banner.png" width="100%" />
 </p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-Active-success" />
+  <img src="https://img.shields.io/badge/Made%20with-Python-blue" />
+  <img src="https.io/badge/Model-Calibrated%20LogReg-green" />
+  <img src="https://img.shields.io/badge/App-Streamlit-FF4B4B" />
+  <img src="https://img.shields.io/badge/Database-PostgreSQL-316192" />
+</p>
+
+
 # Payment Recovery Prediction (ML + SQL + Streamlit)
 
 An end-to-end machine learning project that predicts which **failed or unpaid transactions** will be recovered within **30 days**, and prioritizes outreach based on **expected recovered revenue** (amount × probability).  
