@@ -11,6 +11,10 @@ Built fully from scratch using **Python**, **SQL**, **PostgreSQL**, **scikit-lea
 
  **https://payment-recovery-ml.streamlit.app**
 
+<p align="center">
+  <img src="assets/demo.gif" width="80%" />
+</p>
+
 Upload a CSV exported from your `v_feature_view` (or use the included sample file) to:
 
 - score unpaid invoices  
