@@ -148,6 +148,15 @@ if source == "Upload CSV":
     )
     if uploaded_file is not None:
         df_input = pd.read_csv(uploaded_file)
+        
+# Optional: Load sample feature file directly from repo
+if st.sidebar.button("Load Sample Data"):
+    try:
+        df_input = pd.read_csv("data/sample_feature_view.csv")
+        st.sidebar.success(f"Loaded {len(df_input)} rows from sample_feature_view.csv")
+    except Exception as e:
+        st.sidebar.error(f"Could not load sample data: {e}")
+
 elif source == "Load from Postgres":
     st.sidebar.markdown(f"**Host:** `{DB_HOST}`  \n**DB:** `{DB_NAME}`  \n**User:** `{DB_USER}`")
     db_password = st.sidebar.text_input("Postgres password", type="password")
