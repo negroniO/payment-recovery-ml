@@ -2,14 +2,14 @@
   <img src="assets/banner.png" width="100%" />
 </p>
 
-# 💳 Payment Recovery Prediction (ML + SQL + Streamlit)
+# Payment Recovery Prediction (ML + SQL + Streamlit)
 
 An end-to-end machine learning project that predicts which **failed or unpaid transactions** will be recovered within **30 days**, and prioritizes outreach based on **expected recovered revenue** (amount × probability).  
 Built fully from scratch using **Python**, **SQL**, **PostgreSQL**, **scikit-learn**, and **Streamlit**.
 
-## 🚀 Live Demo (Streamlit)
+## Live Demo (Streamlit)
 
-👉 **https://payment-recovery-ml.streamlit.app**
+ **https://payment-recovery-ml.streamlit.app**
 
 Upload a CSV exported from your `v_feature_view` (or use the included sample file) to:
 
@@ -18,17 +18,17 @@ Upload a CSV exported from your `v_feature_view` (or use the included sample fil
 - see predicted 30-day recovery probability  
 - and prioritize outreach based on business impact  
 
-## 📌 Project Highlights
+##  Project Highlights
 
-- **🔥 ML model:** Calibrated Logistic Regression  
-- **📊 Metrics:** PR AUC, Brier Score, Lift (Top-K vs overall)  
-- **🧠 Feature engineering:** customer history, retries, timestamps, device, provider, country  
-- **💰 Expected value ranking:** maximize revenue, not raw probability  
-- **🗄️ SQL pipeline:** raw → staging → feature view (PostgreSQL)  
-- **📦 Reproducible:** Conda environment + modular Python scripts  
-- **🖥️ Interactive UI:** Streamlit app for real-time scoring & prioritization  
+- **ML model:** Calibrated Logistic Regression  
+- **Metrics:** PR AUC, Brier Score, Lift (Top-K vs overall)  
+- **Feature engineering:** customer history, retries, timestamps, device, provider, country  
+- **Expected value ranking:** maximize revenue, not raw probability  
+- **SQL pipeline:** raw → staging → feature view (PostgreSQL)  
+- **Reproducible:** Conda environment + modular Python scripts  
+- **Interactive UI:** Streamlit app for real-time scoring & prioritization  
 
-## 🛠 Tech Stack
+## Tech Stack
 
 **Languages & Core**  
 Python, SQL
@@ -45,7 +45,7 @@ Streamlit
 **Dev Tools**  
 Git, Conda, Jupyter
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 payment-recovery-ml/
@@ -66,24 +66,24 @@ payment-recovery-ml/
 └── README.md
 ```
 
-## 🗄️ Data Model (PostgreSQL)
+## Data Model (PostgreSQL)
 
 The project uses a 3-layer SQL design:
 
-### **1️⃣ Raw Layer**  
+### **Raw Layer**  
 Stores synthetic transactions: provider, device, timestamps, retries, country, payment_date.
 
-### **2️⃣ Staging Layer**  
+### **Staging Layer**  
 Cleans data, fixes timestamps, and assigns the binary label:
 ```
 label_recovered_30d = payment_date <= invoice_date + 30 days
 ```
 
-### **3️⃣ Feature View**  
+### **Feature View**  
 Window functions generate:  
 customer history, amount bucket, days since invoice, days since last event, retries, provider, device, country, and more.
 
-## 🤖 Machine Learning Pipeline
+## Machine Learning Pipeline
 
 - Temporal split (train vs test)  
 - Preprocessing (scaling + one-hot encoding)  
@@ -92,7 +92,7 @@ customer history, amount bucket, days since invoice, days since last event, retr
 - PR AUC + Brier Score evaluation  
 - Saves: `model_calibrated.joblib`
 
-## 📈 Scoring Pipeline — Expected Value Approach
+## Scoring Pipeline — Expected Value Approach
 
 Instead of sorting only by probability:
 
@@ -108,7 +108,7 @@ Exports:
 - top-K prioritization  
 - timestamped CSV  
 
-## 🖥️ Streamlit App
+## Streamlit App
 
 Features:  
 - Upload CSV or load from Postgres  
@@ -117,7 +117,7 @@ Features:
 - Prioritize by expected value  
 - Download results  
 
-## ▶️ Run Locally
+## Run Locally
 
 ```
 conda env create -f environment.yml
@@ -129,7 +129,7 @@ python score_from_scratch.py
 streamlit run app/streamlit_app.py
 ```
 
-## 🔮 Future Enhancements
+## Future Enhancements
 
 - XGBoost model  
 - SHAP explanations  
