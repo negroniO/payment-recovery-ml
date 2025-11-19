@@ -16,6 +16,20 @@
 An end-to-end machine learning project that predicts which **failed or unpaid transactions** will be recovered within **30 days**, and prioritizes outreach based on **expected recovered revenue** (amount × probability).  
 Built fully from scratch using **Python**, **SQL**, **PostgreSQL**, **scikit-learn**, and **Streamlit**.
 
+## Table of Contents
+- [Project Highlights](#project-highlights)
+- [Business Impact](#business-impact)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Data Model](#data-model-postgresql)
+- [Machine Learning Pipeline](#machine-learning-pipeline)
+- [Scoring Pipeline](#scoring-pipeline--expected-value-approach)
+- [Streamlit App](#streamlit-app)
+- [Run Locally](#run-locally)
+- [Live Demo](#live-demo-streamlit)
+- [Future Enhancements](#future-enhancements)
+- [Contact](#contact)
+
 
 ##  Project Highlights
 
