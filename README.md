@@ -7,20 +7,6 @@
 An end-to-end machine learning project that predicts which **failed or unpaid transactions** will be recovered within **30 days**, and prioritizes outreach based on **expected recovered revenue** (amount × probability).  
 Built fully from scratch using **Python**, **SQL**, **PostgreSQL**, **scikit-learn**, and **Streamlit**.
 
-## Live Demo (Streamlit)
-
- **https://payment-recovery-ml.streamlit.app**
-
-<p align="center">
-  <img src="assets/demo.gif" width="80%" />
-</p>
-
-Upload a CSV exported from your `v_feature_view` (or use the included sample file) to:
-
-- score unpaid invoices  
-- compute expected recovered revenue  
-- see predicted 30-day recovery probability  
-- and prioritize outreach based on business impact  
 
 ##  Project Highlights
 
@@ -30,7 +16,31 @@ Upload a CSV exported from your `v_feature_view` (or use the included sample fil
 - **Expected value ranking:** maximize revenue, not raw probability  
 - **SQL pipeline:** raw → staging → feature view (PostgreSQL)  
 - **Reproducible:** Conda environment + modular Python scripts  
-- **Interactive UI:** Streamlit app for real-time scoring & prioritization  
+- **Interactive UI:** Streamlit app for real-time scoring & prioritization
+
+##  Business Impact
+
+This project simulates a real-world payment operations workflow where thousands of failed
+credit card payments must be analyzed and prioritized manually. The model provides
+significant operational and financial benefits:
+
+###  Operational Benefits
+- **Automates** the prioritization of failed payments  
+- **Reduces manual effort** for finance & billing teams  
+- **Provides transparency** into probability and expected value of recovery  
+- **Supports better decision-making** with a data-driven scoring system  
+
+###  Financial Benefits
+- Focuses outreach on customers **most likely to pay**
+- Uses **expected recovered value (amount × probability)** to maximize revenue
+- Improves **cash flow predictability**
+- Helps reduce **DSO (Days Sales Outstanding)**
+
+###  Measured Results
+Using the synthetic dataset and calibrated logistic regression:
+
+- **Higher expected recovered value per call**  
+- **Better calibration → more reliable probability estimates**
 
 ## Tech Stack
 
@@ -132,7 +142,21 @@ python score_from_scratch.py
 
 streamlit run app/streamlit_app.py
 ```
+## Live Demo (Streamlit)
 
+ **https://payment-recovery-ml.streamlit.app**
+
+<p align="center">
+  <img src="assets/demo.gif" width="80%" />
+</p>
+
+Upload a CSV exported from your `v_feature_view` (or use the included sample file) to:
+
+- score unpaid invoices  
+- compute expected recovered revenue  
+- see predicted 30-day recovery probability  
+- and prioritize outreach based on business impact
+  
 ## Future Enhancements
 
 - XGBoost model  
@@ -140,4 +164,18 @@ streamlit run app/streamlit_app.py
 - Automated ETL & batch scoring  
 - Writebacks to Postgres  
 - Monitoring & alerting  
-- CI/CD integration  
+- CI/CD integration
+
+---
+
+##  Contact
+
+If you’d like to connect, collaborate, or discuss data/ML roles:
+
+- **GitHub:** https://github.com/negroniO  
+- **LinkedIn:** https://www.linkedin.com/in/george-iordanous 
+
+---
+
+If you found this project useful, consider leaving a ⭐ on the repo!
+
